@@ -4,218 +4,246 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Merchants Guild · Buy from monasteries, parishes and Catholic makers</title>
-<meta name="description" content="A marketplace where monasteries, parishes and Catholic makers sell what they make. Your money goes straight to them.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231F3A6E'/><path d='M14 7h4v6h6v4h-6v8h-4v-8H8v-4h6z' fill='white'/></svg>">
+<meta name="description" content="A marketplace where monasteries, parishes and Catholic makers sell what they make. We're still setting up.">
+<meta name="theme-color" content="#FFFFFF">
+<meta property="og:title" content="Merchants Guild">
+<meta property="og:description" content="Buy from monasteries, parishes and Catholic makers. The money goes to them.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://merchantsguild.org">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%2316181D'/%3E%3Cpath d='M76 30A30 30 0 1 0 76 70' fill='none' stroke='%23FFFFFF' stroke-width='9'/%3E%3Ccircle cx='54' cy='50' r='11' fill='%23C9A55A'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#16181D; --ink-2:#4B505B; --ink-3:#7A808C;
+    --ink:#16181D; --ink-2:#4B505B; --ink-3:#6B707B;
     --line:#E6E4DF; --paper:#FFFFFF; --wash:#F7F6F3;
-    --blue:#1F3A6E; --blue-soft:#E9EEF7; --gold:#A8812F;
-    --radius:10px; --max:1120px;
+    --gold:#A8812F; --gold-ink:#7E5F1F; --gold-soft:#F5EEDF;
+    --radius:10px; --max:1180px; --nav:68px; --head:68px;
+    --display:"Cinzel","Trajan Pro",Georgia,serif;
     font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  body{margin:0;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  html{-webkit-text-size-adjust:100%;scroll-padding-top:calc(var(--head) + 20px)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+  body{margin:0;background:var(--paper);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;touch-action:manipulation}
+  ::selection{background:var(--gold-soft);color:var(--ink)}
   a{color:inherit}
+  button,input{font:inherit;color:inherit}
+  h1,h2,h3{text-wrap:balance}
+  p{text-wrap:pretty}
   .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-  :focus-visible{outline:2px solid var(--blue);outline-offset:3px;border-radius:4px}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
 
-  header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:60px}
-  .brand{display:flex;align-items:center;gap:10px;font-weight:600;text-decoration:none;letter-spacing:-.01em}
-  .nav-links{display:flex;gap:28px;font-size:14.5px;color:var(--ink-2)}
-  .nav-links a{text-decoration:none}
-  .nav-links a:hover{color:var(--ink)}
+  .skip{position:absolute;left:16px;top:-60px;z-index:60;background:var(--ink);color:#fff;padding:10px 14px;border-radius:8px;font-size:14px;text-decoration:none}
+  .skip:focus{top:12px}
 
-  .btn{display:inline-flex;align-items:center;justify-content:center;height:40px;padding:0 16px;border-radius:8px;font:inherit;font-size:14.5px;font-weight:500;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap}
-  .btn-primary{background:var(--blue);color:#fff}
-  .btn-primary:hover{background:#18305D}
+  /* ---------- Header: logo slot left, shop tools right ---------- */
+  header{position:fixed;inset:0 0 auto 0;z-index:20;background:rgba(255,255,255,.95);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid var(--line)}
+  .nav{height:var(--nav);display:flex;align-items:center;gap:10px;max-width:var(--max);margin:0 auto;padding:0 24px}
+  .slot{flex:none;height:40px;width:48px}
+
+  .mark{font-family:var(--display);position:fixed;left:0;top:0;z-index:30;line-height:1;color:var(--ink);text-decoration:none;display:none;font-weight:400;letter-spacing:.04em}
+  .js .mark{display:block}
+  .mark svg{position:absolute;overflow:visible}
+
+  /* Browse menu */
+  .menu{position:relative}
+  .menu-btn{display:inline-flex;align-items:center;gap:6px;height:40px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:var(--paper);cursor:pointer;font-size:14.5px;font-weight:500;transition:background-color .2s}
+  .menu-btn:hover,.menu-btn[aria-expanded="true"]{background:var(--wash)}
+  .menu-btn svg{transition:transform .2s}
+  .menu-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+  .panel{position:absolute;right:0;top:calc(100% + 8px);width:min(560px,calc(100vw - 32px));background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -20px rgba(22,24,29,.28);padding:8px;display:none}
+  .panel.open{display:block}
+  .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+  .cat{display:block;width:100%;text-align:left;border:0;background:transparent;border-radius:8px;padding:12px 14px;cursor:pointer;transition:background-color .15s}
+  .cat:hover,.cat:focus-visible{background:var(--wash)}
+  .cat b{display:block;font-weight:600;font-size:15px}
+  .cat span{display:block;color:var(--ink-3);font-size:13.5px;margin-top:2px}
+  .panel-note{margin:6px 6px 2px;padding:10px 8px 4px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-3)}
+
+  /* Search */
+  .search{position:relative;flex:0 1 380px;min-width:0;margin-left:auto}
+  .search input{width:100%;height:40px;border:1px solid var(--line);border-radius:999px;padding:0 16px 0 40px;background:var(--wash);font-size:14.5px;transition:border-color .2s,background-color .2s}
+  .search input::placeholder{color:var(--ink-3)}
+  .search input:focus{outline:none;border-color:var(--gold);background:var(--paper)}
+  .search > svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--ink-3);pointer-events:none}
+  .results{position:absolute;left:0;right:0;top:calc(100% + 8px);min-width:300px;background:var(--paper);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 40px -20px rgba(22,24,29,.28);overflow:hidden;display:none}
+  .results.open{display:block}
+  .results-head{display:flex;justify-content:space-between;gap:12px;padding:10px 14px;background:var(--wash);border-bottom:1px solid var(--line);font-size:12.5px;color:var(--ink-3)}
+  .results-head b{color:var(--gold-ink);font-weight:500}
+  .results ul{list-style:none;margin:0;padding:4px 0;max-height:min(360px,60vh);overflow-y:auto;overscroll-behavior:contain}
+  .results li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;padding:10px 14px;border-top:1px solid var(--line)}
+  .results li:first-child{border-top:0}
+  .r-name{font-weight:500;font-size:14.5px}
+  .r-maker{grid-column:1;color:var(--ink-3);font-size:13px}
+  .r-price{grid-row:1/3;grid-column:2;align-self:center;font-variant-numeric:tabular-nums;font-size:14.5px}
+  .results .empty{padding:16px 14px;color:var(--ink-2);font-size:14px}
+  .results-foot{padding:10px 14px;border-top:1px solid var(--line);font-size:13px;color:var(--ink-2)}
+  .results-foot a{color:var(--gold-ink)}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;height:42px;padding:0 18px;border-radius:8px;font-size:14.5px;font-weight:500;text-decoration:none;border:1px solid transparent;cursor:pointer;white-space:nowrap;transition:background-color .2s,border-color .2s,transform .12s}
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--ink);color:#fff}
+  .btn-primary:hover{background:#2A2D35}
   .btn-ghost{border-color:var(--line);background:var(--paper);color:var(--ink)}
   .btn-ghost:hover{background:var(--wash)}
-  .btn-sm{height:34px;padding:0 12px;font-size:14px}
+  .btn-sm{height:40px;padding:0 14px;font-size:14px}
 
-  .hero{padding:88px 0 72px}
-  .hero-grid{display:grid;grid-template-columns:1fr 1.05fr;gap:56px;align-items:center}
+  /* ---------- Hero ---------- */
+  .hero{padding:calc(var(--head) + 72px) 0 88px}
+  .hero-word{font-family:var(--display);font-size:clamp(30px,7.4vw,108px);line-height:1;font-weight:400;letter-spacing:.04em;margin:0 0 48px;white-space:nowrap;position:relative}
+  .hero-word .c{position:relative}
+  .js .hero-word .c{color:transparent}
+  .bl{display:inline-block;width:0;height:0;vertical-align:baseline}
+  .xh{position:absolute;left:0;top:0;width:0;height:1ex;visibility:hidden}
   .status{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-2);border:1px solid var(--line);border-radius:999px;padding:5px 12px 5px 10px;margin-bottom:22px}
   .status::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--gold)}
-  h1{font-size:clamp(2.3rem,4.6vw,3.5rem);line-height:1.05;letter-spacing:-.03em;font-weight:600;margin:0 0 20px;max-width:15ch}
-  .lede{font-size:18px;color:var(--ink-2);max-width:46ch;margin:0 0 32px}
+  h1{font-size:clamp(2rem,4vw,3rem);line-height:1.08;letter-spacing:-.025em;font-weight:600;margin:0 0 18px;max-width:18ch}
+  .lede{font-size:18px;color:var(--ink-2);max-width:52ch;margin:0 0 30px}
   .actions{display:flex;gap:10px;flex-wrap:wrap}
 
-  /* Hero: a shop window of example listings */
-  .shop{border:1px solid var(--line);border-radius:14px;background:var(--wash);padding:14px;box-shadow:0 24px 48px -28px rgba(31,58,110,.3)}
-  .shop-bar{display:flex;align-items:center;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:9px 12px;font-size:14px;color:var(--ink-3);margin-bottom:12px}
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-  .card{background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden}
-  .ph{aspect-ratio:4/3;display:grid;place-items:center}
-  .card-body{padding:10px 12px 12px}
-  .card-title{font-size:14px;font-weight:500;margin:0}
-  .card-seller{font-size:12.5px;color:var(--ink-3);margin:2px 0 8px}
-  .card-price{font-size:14px;font-weight:600;font-variant-numeric:tabular-nums}
-  .shop-caption{font-size:12.5px;color:var(--ink-3);text-align:center;margin:12px 0 2px}
-
-  section{padding:80px 0;border-top:1px solid var(--line)}
-  h2{font-size:clamp(1.6rem,2.6vw,2.1rem);letter-spacing:-.02em;line-height:1.15;font-weight:600;margin:0 0 12px}
-  .section-intro{color:var(--ink-2);max-width:58ch;margin:0 0 40px}
+  /* ---------- Sections ---------- */
+  section{padding:88px 0;border-top:1px solid var(--line)}
+  h2{font-family:var(--display);font-weight:400;font-size:clamp(1.5rem,2.6vw,2rem);letter-spacing:.04em;line-height:1.2;margin:0}
+  .latin{display:block;font-family:Georgia,serif;font-style:italic;color:var(--gold-ink);font-size:16px;margin:6px 0 0}
+  .section-intro{color:var(--ink-2);max-width:56ch;margin:14px 0 36px}
 
   .db{border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
-  .db-row{display:grid;grid-template-columns:240px 1fr;gap:24px;align-items:baseline;padding:18px 22px;border-top:1px solid var(--line)}
+  .db-row{display:grid;grid-template-columns:240px minmax(0,1fr) auto;gap:24px;align-items:baseline;width:100%;padding:18px 22px;border:0;border-top:1px solid var(--line);background:transparent;text-align:left;cursor:pointer;transition:background-color .15s}
   .db-row:first-child{border-top:0}
+  .db-row:hover{background:var(--wash)}
   .db-name{font-weight:600;display:flex;align-items:center;gap:10px}
   .db-name svg{flex:none;color:var(--gold)}
   .db-desc{color:var(--ink-2);font-size:15px}
+  .db-go{font-size:13.5px;color:var(--ink-3)}
 
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;list-style:none;margin:0 0 28px;padding:0}
   .step{padding:28px 26px;border-left:1px solid var(--line)}
   .step:first-child{border-left:0}
-  .step-n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:7px;background:var(--blue-soft);color:var(--blue);font-size:13px;font-weight:600;margin-bottom:16px}
+  .step-n{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 6px;border-radius:7px;background:var(--gold-soft);color:var(--gold-ink);font-family:var(--display);font-size:13px;font-weight:500;margin-bottom:16px}
   .step h3{font-size:17px;margin:0 0 6px;font-weight:600;letter-spacing:-.01em}
   .step p{margin:0;color:var(--ink-2);font-size:15px}
-  .after-steps{margin-top:28px}
 
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
-  .letter p{color:var(--ink-2);max-width:52ch;margin:0 0 14px}
+  .split{display:grid;grid-template-columns:1fr 1.4fr;gap:56px;align-items:start}
+  .letter p{color:var(--ink-2);margin:0 0 16px;max-width:60ch}
   .letter .sign{color:var(--ink);font-weight:500}
 
   details{border-top:1px solid var(--line);padding:18px 0}
   details:last-of-type{border-bottom:1px solid var(--line)}
   summary{cursor:pointer;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:16px}
   summary::-webkit-details-marker{display:none}
-  summary::after{content:"+";color:var(--ink-3);font-size:20px;line-height:1}
-  details[open] summary::after{content:"–"}
+  summary::after{content:"+";color:var(--gold);font-size:20px;line-height:1}
+  details[open] summary::after{content:"\2013"}
   details p{color:var(--ink-2);margin:10px 0 0;max-width:62ch}
+  .faq{margin-top:28px}
 
   .cta{background:var(--wash)}
-  .cta-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-  .cta-box{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:28px}
-  .cta-box h2{font-size:1.4rem;margin:0 0 8px}
-  .cta-box p{color:var(--ink-2);margin:0 0 20px}
+  .cta-inner{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
+  .cta p{margin:10px 0 0;color:var(--ink-2);max-width:52ch}
 
   footer{border-top:1px solid var(--line);padding:32px 0;font-size:14px;color:var(--ink-3)}
   .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-  .foot a{text-decoration:none}
-  .foot a:hover{color:var(--ink)}
+  .amdg{font-family:var(--display);letter-spacing:.12em;color:var(--gold-ink)}
+  footer a{text-decoration:none}
+  footer a:hover{color:var(--ink)}
 
-  @media (prefers-reduced-motion:no-preference){
-    .shop{animation:settle .7s cubic-bezier(.2,.7,.2,1) .15s both}
-    @keyframes settle{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
-  }
-  @media (max-width:900px){
-    .hero{padding:48px 0}
-    .hero-grid,.split,.cta-grid{grid-template-columns:1fr;gap:32px}
-    .nav-links{display:none}
+  /* ---------- Phones ---------- */
+  @media (max-width:760px){
+    :root{--nav:60px;--head:116px}
+    .nav{flex-wrap:wrap;height:auto;padding:0 16px;row-gap:0}
+    .slot{height:60px}
+    .menu{margin-left:auto}
+    .search{order:3;flex:1 0 100%;margin:0 0 12px}
+    .results{min-width:0}
+    .menu{position:static}
+    .panel{left:16px;right:16px;width:auto;top:56px}
+    .cat-grid{grid-template-columns:1fr}
+    .hero{padding:calc(var(--head) + 44px) 0 56px}
+    .hero-word{margin-bottom:36px}
+    .split{grid-template-columns:1fr;gap:28px}
     .db-row{grid-template-columns:1fr;gap:4px}
+    .db-go{display:none}
     .steps{grid-template-columns:1fr}
     .step{border-left:0;border-top:1px solid var(--line)}
     .step:first-child{border-top:0}
-    section{padding:56px 0}
+    section{padding:60px 0}
   }
 </style>
 </head>
 <body>
+<a class="skip" href="#content">Skip to content</a>
 
 <header>
-  <div class="wrap nav">
-    <a class="brand" href="#" aria-label="Merchants Guild home">
-      <svg width="26" height="26" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#1F3A6E"/><path d="M14 7h4v6h6v4h-6v8h-4v-8H8v-4h6z" fill="#fff"/></svg>
-      Merchants Guild
-    </a>
-    <nav class="nav-links" aria-label="Main">
-      <a href="#what">What you'll find</a>
-      <a href="#sellers">For sellers</a>
-      <a href="#faq">Questions</a>
-    </nav>
-    <a class="btn btn-primary btn-sm" href="#join">Sell with us</a>
+  <div class="nav">
+    <span class="slot" aria-hidden="true"></span>
+      <div class="search" role="search">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
+        <label for="q" class="sr" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Search</label>
+        <input id="q" type="search" placeholder="Search cheese, soap, rosaries…" autocomplete="off" spellcheck="false" aria-controls="results" aria-expanded="false">
+        <div class="results" id="results" aria-live="polite"></div>
+      </div>
+      <div class="menu">
+        <button class="menu-btn" id="browse" aria-expanded="false" aria-controls="cats">Browse
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <div class="panel" id="cats">
+          <div class="cat-grid" id="cat-grid"></div>
+          <p class="panel-note">We’re still setting up. These show example listings.</p>
+        </div>
+      </div>
+      <a class="btn btn-primary btn-sm" href="#join">Sell with us</a>
   </div>
 </header>
 
-<main>
-  <div class="hero">
-    <div class="wrap hero-grid">
-      <div>
-        <span class="status">Launching soon. Looking for our first sellers.</span>
-        <h1>Buy from monasteries, parishes and Catholic makers.</h1>
-        <p class="lede">Cheese from an abbey, soap from a convent, a rosary from a family workshop. Merchants Guild is one place to buy what Catholic communities make, and the money goes to them.</p>
-        <div class="actions">
-          <a class="btn btn-primary" href="#join">Sell with us</a>
-          <a class="btn btn-ghost" href="#join">Join the waitlist</a>
-        </div>
-      </div>
+<a class="mark" href="#top" aria-label="Merchants Guild, back to top"><span class="mc">c</span><svg viewBox="30 25 50 50" aria-hidden="true"><path d="M53.79 39.07L55.00 25.00L56.21 39.07ZM56.96 39.18L59.92 31.65L58.71 39.65ZM59.42 39.93L67.50 28.35L61.51 41.14ZM62.11 41.61L68.44 36.56L63.39 42.89ZM63.86 43.49L76.65 37.50L65.07 45.58ZM65.35 46.29L73.35 45.08L65.82 48.04ZM65.93 48.79L80.00 50.00L65.93 51.21ZM65.82 51.96L73.35 54.92L65.35 53.71ZM65.07 54.42L76.65 62.50L63.86 56.51ZM63.39 57.11L68.44 63.44L62.11 58.39ZM61.51 58.86L67.50 71.65L59.42 60.07ZM58.71 60.35L59.92 68.35L56.96 60.82ZM56.21 60.93L55.00 75.00L53.79 60.93ZM53.04 60.82L50.08 68.35L51.29 60.35ZM50.58 60.07L42.50 71.65L48.49 58.86ZM47.89 58.39L41.56 63.44L46.61 57.11ZM46.14 56.51L33.35 62.50L44.93 54.42ZM44.65 53.71L36.65 54.92L44.18 51.96ZM44.07 51.21L30.00 50.00L44.07 48.79ZM44.18 48.04L36.65 45.08L44.65 46.29ZM44.93 45.58L33.35 37.50L46.14 43.49ZM46.61 42.89L41.56 36.56L47.89 41.61ZM48.49 41.14L42.50 28.35L50.58 39.93ZM51.29 39.65L50.08 31.65L53.04 39.18Z" fill="#A8812F"/><circle cx="55" cy="50" r="10.6" fill="none" stroke="#A8812F" stroke-width="1.6"/><circle cx="55" cy="50" r="7.8" fill="#FFFFFF"/></svg></a>
 
-      <div class="shop" aria-label="Example of how shop listings will look">
-        <div class="shop-bar" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="5"/><path d="M11 11l3.5 3.5"/></svg>
-          Christmas gifts
-        </div>
-        <div class="grid">
-          <div class="card">
-            <div class="ph" style="background:#F1E7CF" aria-hidden="true">
-              <svg width="64" height="48" viewBox="0 0 64 48"><path d="M6 34 32 10l26 24v6H6z" fill="#E3C984"/><path d="M6 34h52v6H6z" fill="#CFAE5E"/><circle cx="24" cy="30" r="2.5" fill="#F1E7CF"/><circle cx="38" cy="25" r="2" fill="#F1E7CF"/></svg>
-            </div>
-            <div class="card-body"><p class="card-title">Abbey cheese, 400g</p><p class="card-seller">Benedictine monks</p><span class="card-price">£12.50</span></div>
-          </div>
-          <div class="card">
-            <div class="ph" style="background:#E7EDE4" aria-hidden="true">
-              <svg width="60" height="44" viewBox="0 0 60 44"><rect x="8" y="10" width="44" height="26" rx="8" fill="#B9CCB1"/><path d="M18 18c6 4 18 4 24 0" stroke="#E7EDE4" stroke-width="2.5" fill="none" stroke-linecap="round"/></svg>
-            </div>
-            <div class="card-body"><p class="card-title">Lavender soap</p><p class="card-seller">Poor Clare sisters</p><span class="card-price">£6.00</span></div>
-          </div>
-          <div class="card">
-            <div class="ph" style="background:#E9EEF7" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="#1F3A6E"><g opacity=".75"><circle cx="28" cy="8" r="3"/><circle cx="38" cy="11" r="3"/><circle cx="45" cy="19" r="3"/><circle cx="47" cy="29" r="3"/><circle cx="18" cy="11" r="3"/><circle cx="11" cy="19" r="3"/><circle cx="9" cy="29" r="3"/><circle cx="13" cy="38" r="3"/><circle cx="43" cy="38" r="3"/></g><path d="M26 42h4v4h4v3h-4v6h-4v-6h-4v-3h4z"/></svg>
-            </div>
-            <div class="card-body"><p class="card-title">Olive wood rosary</p><p class="card-seller">Family workshop</p><span class="card-price">£18.00</span></div>
-          </div>
-          <div class="card">
-            <div class="ph" style="background:#F4E4DA" aria-hidden="true">
-              <svg width="48" height="52" viewBox="0 0 48 52"><rect x="14" y="16" width="20" height="30" rx="3" fill="#E9C3AA"/><path d="M24 4c4 5 4 9 0 11-4-2-4-6 0-11z" fill="#A8812F"/><rect x="23" y="13" width="2" height="4" fill="#7A808C"/></svg>
-            </div>
-            <div class="card-body"><p class="card-title">Beeswax Advent candles</p><p class="card-seller">Parish candle group</p><span class="card-price">£15.00</span></div>
-          </div>
-        </div>
-        <p class="shop-caption">Example listings</p>
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="hero-word" aria-label="Merchants Guild" translate="no">Mer<span class="c">c<i class="bl"></i></span>hants Guild<span class="xh"></span></p>
+      <span class="status">We’re still setting up</span>
+      <h1>Buy from monasteries, parishes and Catholic makers.</h1>
+      <p class="lede">Cheese from an abbey, soap from a convent, a rosary from a family workshop. One place to buy what Catholic communities make, and the money goes to them.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#join">Sell with us</a>
+        <a class="btn btn-ghost" href="mailto:merchantsguilds@gmail.com?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a>
       </div>
     </div>
   </div>
 
   <section id="what">
-    <div class="wrap">
-      <h2>What you'll find</h2>
-      <p class="section-intro">Lots of monasteries and convents make good things and only sell them at the gate or the gift shop. We want to put them in front of Catholics everywhere.</p>
-      <div class="db">
-        <div class="db-row"><span class="db-name"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>Monastery food</span><span class="db-desc">Cheese, honey, jam, fudge, beer and liqueurs.</span></div>
-        <div class="db-row"><span class="db-name"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>Soap and candles</span><span class="db-desc">Handmade soap, balms and beeswax candles.</span></div>
-        <div class="db-row"><span class="db-name"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>Rosaries and devotions</span><span class="db-desc">Rosaries, chaplets, medals and holy water fonts.</span></div>
-        <div class="db-row"><span class="db-name"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>Art and icons</span><span class="db-desc">Written icons, prints and carvings by Catholic artists.</span></div>
-        <div class="db-row"><span class="db-name"><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>Gifts for sacraments</span><span class="db-desc">Presents for baptisms, First Holy Communions and confirmations.</span></div>
-      </div>
+    <div class="wrap" id="content">
+      <h2>What you’ll find</h2>
+      <span class="latin" lang="la">Quae invenies</span>
+      <p class="section-intro">Many monasteries and convents make beautiful things and only sell them at the gate or the gift shop. We want to put them in front of Catholics everywhere.</p>
+      <div class="db" id="cat-list"></div>
     </div>
   </section>
 
   <section id="sellers">
     <div class="wrap">
       <h2>For sellers</h2>
-      <p class="section-intro">If you're a monastery, convent, parish or Catholic small business, you can have your own shop on Merchants Guild. You don't need a website or any technical know-how.</p>
-      <div class="steps">
-        <div class="step"><span class="step-n">1</span><h3>Get in touch</h3><p>Tell us who you are and what you make. A short email is enough.</p></div>
-        <div class="step"><span class="step-n">2</span><h3>We set up your shop</h3><p>Send us photos and prices and we'll put your listings together with you.</p></div>
-        <div class="step"><span class="step-n">3</span><h3>Start selling</h3><p>Orders come to you, you post them out, and you get paid.</p></div>
-      </div>
-      <div class="after-steps"><a class="btn btn-primary" href="#join">Sell with us</a></div>
+      <span class="latin" lang="la">Pro venditoribus</span>
+      <p class="section-intro">If you’re a monastery, convent, parish or Catholic small business, you can have your own shop on Merchants Guild. You don’t need a website or any technical know-how.</p>
+      <ol class="steps">
+        <li class="step"><span class="step-n" aria-hidden="true">I</span><h3>Get in touch</h3><p>Tell us who you are and what you make. A short email is enough.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">II</span><h3>We set up your shop</h3><p>Send us photos and prices and we’ll put your listings together with you.</p></li>
+        <li class="step"><span class="step-n" aria-hidden="true">III</span><h3>Start selling</h3><p>Orders come to you, you post them out, and you get paid.</p></li>
+      </ol>
+      <a class="btn btn-primary" href="#join">Sell with us</a>
     </div>
   </section>
 
   <section>
     <div class="wrap split">
-      <h2>Why we're doing this</h2>
+      <div>
+        <h2>Why we’re doing this</h2>
+        <span class="latin" lang="la">Cur hoc facimus</span>
+      </div>
       <div class="letter">
-        <p>We're a Catholic couple, and every Christmas we'd try to buy gifts that supported the Church in some way. It was harder than it should be. The monasteries making cheese and soap were hard to find, and most of them had no way to sell online.</p>
-        <p>So we're building one. We want Catholics to be able to buy for birthdays, feast days and Christmas knowing the money is helping a religious community or a Catholic family business.</p>
+        <p>We’re a Catholic couple, and every Christmas we’d try to buy gifts that supported the Church in some way. It was harder than it should be. The monasteries making cheese and soap were hard to find, and most of them had no way to sell online.</p>
+        <p>So we’re building one. We want Catholics to be able to buy for birthdays, feast days and Christmas knowing the money is helping a religious community or a Catholic family business.</p>
         <p class="sign">[Your names]</p>
       </div>
     </div>
@@ -224,24 +252,25 @@
   <section id="faq">
     <div class="wrap">
       <h2>Questions</h2>
-      <details><summary>When does it open?</summary><p>We're talking to our first sellers now. Join the waitlist and we'll email you when the shop opens.</p></details>
-      <details><summary>Who can sell?</summary><p>Monasteries, convents, parishes, Catholic charities and Catholic small businesses and makers.</p></details>
-      <details><summary>What does it cost to sell?</summary><p>We're working that out with our first sellers. Nobody pays anything before we've agreed it together.</p></details>
-      <details><summary>Do I need to be good with computers?</summary><p>No. If you can send an email with a few photos, we can do the rest with you.</p></details>
+      <span class="latin" lang="la">Quaestiones</span>
+      <div class="faq">
+        <details><summary>When does it open?</summary><p>We’re still setting up and talking to our first sellers. Join the waitlist and we’ll email you when the shop opens.</p></details>
+        <details><summary>Who can sell?</summary><p>Monasteries, convents, parishes, Catholic charities and Catholic small businesses and makers.</p></details>
+        <details><summary>What does it cost to sell?</summary><p>We’re working that out with our first sellers. Nobody pays anything before we’ve agreed it together.</p></details>
+        <details><summary>Do I need to be good with computers?</summary><p>No. If you can send an email with a few photos, we can do the rest with you.</p></details>
+      </div>
     </div>
   </section>
 
   <section class="cta" id="join">
-    <div class="wrap cta-grid">
-      <div class="cta-box">
+    <div class="wrap cta-inner">
+      <div>
         <h2>Sell with us</h2>
-        <p>For monasteries, parishes and Catholic makers. Email us and tell us a little about what you make.</p>
-        <a class="btn btn-primary" href="mailto:hello@merchantsguild.example?subject=I%27d%20like%20to%20sell%20on%20Merchants%20Guild&body=Name%20of%20our%20community%20or%20business%3A%0AWhere%20we%20are%3A%0AWhat%20we%20make%3A%0A">Email us</a>
+        <p>For monasteries, parishes and Catholic makers. Email us and tell us a little about what you make. Buying rather than selling? Join the waitlist instead.</p>
       </div>
-      <div class="cta-box">
-        <h2>Join the waitlist</h2>
-        <p>For buyers. We'll email you once when the shop opens.</p>
-        <a class="btn btn-ghost" href="mailto:hello@merchantsguild.example?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a>
+      <div class="actions">
+        <a class="btn btn-primary" href="mailto:merchantsguilds@gmail.com?subject=I%27d%20like%20to%20sell%20on%20Merchants%20Guild&body=Name%20of%20our%20community%20or%20business%3A%0AWhere%20we%20are%3A%0AWhat%20we%20make%3A%0A">Email us</a>
+        <a class="btn btn-ghost" href="mailto:merchantsguilds@gmail.com?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a>
       </div>
     </div>
   </section>
@@ -249,10 +278,140 @@
 
 <footer>
   <div class="wrap foot">
-    <span>© 2026 Merchants Guild</span>
-    <a href="mailto:hello@merchantsguild.example">hello@merchantsguild.example</a>
+    <span class="amdg" lang="la">Ad maiorem Dei gloriam</span>
+    <span>© 2026 <span translate="no">Merchants Guild</span> · <a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a></span>
   </div>
 </footer>
 
+<script>
+/* =====================================================
+   EDIT HERE: categories and example products.
+   Change the words between the quote marks.
+   ===================================================== */
+var CATEGORIES = [
+  { name: "Monastery food",         about: "Cheese, honey, jam, fudge, beer and liqueurs." },
+  { name: "Soap and candles",       about: "Handmade soap, balms and beeswax candles." },
+  { name: "Rosaries and devotions", about: "Rosaries, chaplets, medals and holy water fonts." },
+  { name: "Art and icons",          about: "Written icons, prints and carvings by Catholic artists." },
+  { name: "Gifts for sacraments",   about: "Presents for baptisms, First Holy Communions and confirmations." }
+];
+
+var EXAMPLES = [
+  { name: "Abbey cheese, 400g",          maker: "Benedictine monks",     price: "£12.50", category: "Monastery food" },
+  { name: "Wildflower honey",            maker: "Cistercian nuns",       price: "£8.00",  category: "Monastery food" },
+  { name: "Monastery fudge",             maker: "Trappist monks",        price: "£5.50",  category: "Monastery food" },
+  { name: "Abbey ale, 4 bottles",        maker: "Benedictine brewery",   price: "£16.00", category: "Monastery food" },
+  { name: "Lavender soap",               maker: "Poor Clare sisters",    price: "£6.00",  category: "Soap and candles" },
+  { name: "Beeswax Advent candles",      maker: "A parish candle group", price: "£15.00", category: "Soap and candles" },
+  { name: "Hand balm",                   maker: "Carmelite sisters",     price: "£7.50",  category: "Soap and candles" },
+  { name: "Olive wood rosary",           maker: "A family workshop",     price: "£18.00", category: "Rosaries and devotions" },
+  { name: "Miraculous Medal, silver",    maker: "A Catholic jeweller",   price: "£24.00", category: "Rosaries and devotions" },
+  { name: "Holy water font",             maker: "A potter in Wales",     price: "£22.00", category: "Rosaries and devotions" },
+  { name: "Written icon of St Joseph",   maker: "An iconographer",       price: "£95.00", category: "Art and icons" },
+  { name: "Print of the Annunciation",   maker: "A Catholic artist",     price: "£30.00", category: "Art and icons" },
+  { name: "Baptism candle",              maker: "Benedictine sisters",   price: "£14.00", category: "Gifts for sacraments" },
+  { name: "First Communion rosary",      maker: "A family workshop",     price: "£20.00", category: "Gifts for sacraments" },
+  { name: "Confirmation prayer book",    maker: "A parish bookbinder",   price: "£18.00", category: "Gifts for sacraments" }
+];
+
+var EMAIL = "merchantsguilds@gmail.com";
+/* ============ End of the part to edit ============ */
+
+(function(){
+  var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});};
+  var cross='<svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M6 1h2v4h4v2H8v6H6V7H2V5h4z" fill="currentColor"/></svg>';
+  var q=document.getElementById('q'), results=document.getElementById('results');
+  var browse=document.getElementById('browse'), cats=document.getElementById('cats');
+
+  document.getElementById('cat-grid').innerHTML=CATEGORIES.map(function(c){
+    return '<button class="cat" data-cat="'+esc(c.name)+'"><b>'+esc(c.name)+'</b><span>'+esc(c.about)+'</span></button>';
+  }).join('');
+  document.getElementById('cat-list').innerHTML=CATEGORIES.map(function(c){
+    return '<button class="db-row" data-cat="'+esc(c.name)+'"><span class="db-name">'+cross+esc(c.name)+'</span><span class="db-desc">'+esc(c.about)+'</span><span class="db-go">See examples</span></button>';
+  }).join('');
+
+  function show(list,label){
+    var rows=list.length?'<ul>'+list.map(function(p){
+      return '<li><span class="r-name">'+esc(p.name)+'</span><span class="r-maker">'+esc(p.maker)+'</span><span class="r-price">'+esc(p.price)+'</span></li>';
+    }).join('')+'</ul>':'<p class="empty">No examples match “'+esc(label)+'”. Try cheese, soap, candles or rosary.</p>';
+    results.innerHTML='<div class="results-head"><span>'+esc(label)+'</span><b>Example listings</b></div>'+rows+
+      '<div class="results-foot">We’re still setting up, so nothing is for sale yet. <a href="mailto:'+EMAIL+'?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a> to hear when the shop opens.</div>';
+    results.classList.add('open'); q.setAttribute('aria-expanded','true');
+  }
+  function hide(){results.classList.remove('open'); q.setAttribute('aria-expanded','false');}
+  function search(term){
+    var t=term.trim().toLowerCase();
+    if(!t){hide();return;}
+    show(EXAMPLES.filter(function(p){return (p.name+' '+p.maker+' '+p.category).toLowerCase().indexOf(t)>-1;}),term.trim());
+  }
+  function byCategory(name){
+    closeMenu();
+    q.value=name;
+    show(EXAMPLES.filter(function(p){return p.category===name;}),name);
+    q.focus({preventScroll:true});
+  }
+  function openMenu(){cats.classList.add('open');browse.setAttribute('aria-expanded','true');hide();}
+  function closeMenu(){cats.classList.remove('open');browse.setAttribute('aria-expanded','false');}
+
+  q.addEventListener('input',function(){search(q.value);});
+  q.addEventListener('focus',function(){if(q.value.trim())search(q.value);});
+  browse.addEventListener('click',function(e){e.stopPropagation(); cats.classList.contains('open')?closeMenu():openMenu();});
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('[data-cat]');
+    if(b){e.preventDefault();byCategory(b.getAttribute('data-cat'));return;}
+    if(!e.target.closest('.search'))hide();
+    if(!e.target.closest('.menu'))closeMenu();
+  });
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){hide();closeMenu();}});
+})();
+
+/* The c with the monstrance: starts in the big name, docks in the top left as you scroll */
+(function(){
+  var root=document.documentElement; root.classList.add('js');
+  var word=document.querySelector('.hero-word'), ph=word.querySelector('.c'), bl=word.querySelector('.bl'), xhEl=word.querySelector('.xh');
+  var mark=document.querySelector('.mark'), mc=mark.querySelector('.mc'), burst=mark.querySelector('svg'), slot=document.querySelector('.slot');
+  var F,w,h,cx0,cy0,ox,oy,sEnd,ink=0,tx,ty;
+  function measure(){
+    mark.style.transform='none';
+    F=parseFloat(getComputedStyle(word).fontSize);
+    mark.style.fontSize=F+'px';
+    var r=ph.getBoundingClientRect();
+    w=r.width; h=r.height;
+    cx0=r.left+w/2; cy0=r.top+scrollY+h/2;
+    var mr=mark.getBoundingClientRect(), cr=mc.getBoundingClientRect();
+    ox=cr.left-mr.left; oy=cr.top-mr.top;
+    var base=bl.getBoundingClientRect().top-r.top;
+    var cs=getComputedStyle(word), ctx=document.createElement('canvas').getContext('2d');
+    ctx.font=cs.fontWeight+' '+F+'px '+cs.fontFamily;
+    var m=ctx.measureText('c');
+    var asc=m.actualBoundingBoxAscent||F*0.5, desc=m.actualBoundingBoxDescent||0;
+    var iL=-(m.actualBoundingBoxLeft||0), iR=m.actualBoundingBoxRight||w;
+    var midY=base-(asc-desc)/2, size=(asc+desc)*0.6;
+    burst.style.width=burst.style.height=size+'px';
+    burst.style.left=(ox+iL+(iR-iL)*0.57-size/2)+'px';
+    burst.style.top=(oy+midY-size/2)+'px';
+    ink=midY-h/2;
+    var dockedF=innerWidth<=760?60:70;
+    sEnd=dockedF/F;
+    slot.style.width=Math.round(w*sEnd)+'px';
+    var sr=slot.getBoundingClientRect();
+    tx=sr.left+sr.width/2; ty=sr.top+sr.height/2;
+    mark.style.transformOrigin=(ox+w/2)+'px '+(oy+h/2)+'px';
+    update();
+  }
+  function update(){
+    var target=ty-ink*sEnd;
+    var e=Math.min(1,Math.max(0,scrollY/Math.max(1,cy0-target)));
+    var cy=Math.max(target,cy0-scrollY), cx=cx0+(tx-cx0)*e, s=1+(sEnd-1)*e;
+    mark.style.transform='translate('+(cx-(ox+w/2))+'px,'+(cy-(oy+h/2))+'px) scale('+s+')';
+    word.style.opacity=Math.max(0,1-e*1.8);
+  }
+  var ticking=false;
+  addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(function(){update();ticking=false;});} },{passive:true});
+  addEventListener('resize',measure);
+  measure();
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(measure);
+})();
+</script>
 </body>
 </html>
