@@ -198,6 +198,26 @@
     .step:first-child{border-top:0}
     section{padding:60px 0}
   }
+
+  /* ---------- Waitlist sign-up ---------- */
+  .wl-copy{flex:1 1 340px}
+  .wl-sell{font-size:15px}
+  .wl-sell a{color:var(--ink);font-weight:500;text-underline-offset:3px}
+  .wl{flex:1 1 440px;max-width:560px}
+  .wl-row{display:flex;gap:8px;flex-wrap:wrap}
+  .wl-row input{flex:1 1 160px;min-width:0;height:42px;padding:0 12px;border:1px solid #D9D6CF;border-radius:8px;background:var(--paper);font-size:16px}
+  .wl-row input[type=email]{flex-basis:200px}
+  .wl-row input:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--gold-soft)}
+  .wl-row input[aria-invalid=true]{border-color:#A3302A}
+  .wl-row .btn{flex:none}
+  .wl-sr,.wl-hp{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .wl-msg{min-height:0;margin:8px 0 0!important;font-size:14px;color:#A3302A!important}
+  .wl-msg:empty{display:none}
+  .wl-small{font-size:13px!important;color:var(--ink-3)!important;margin:10px 0 0!important}
+  .wl-small a{color:inherit}
+  .wl-done{flex:1 1 440px;max-width:560px}
+  .wl-done-t{font-family:var(--display);font-size:22px;letter-spacing:.04em;color:var(--ink)!important;margin:0!important}
+  @media (max-width:600px){.wl-row .btn{flex:1 1 100%}}
 </style>
 </head>
 <body>
@@ -236,7 +256,7 @@
       <p class="lede">Cheese from an abbey, soap from a convent, a rosary from a family workshop. One place to buy what Catholic communities make, and the money goes to them.</p>
       <div class="actions">
         <a class="btn btn-primary" href="sell.html">Sell with us</a>
-        <a class="btn btn-ghost" href="mailto:merchantsguilds@gmail.com?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a>
+        <a class="btn btn-ghost" href="#waitlist">Join the waitlist</a>
       </div>
     </div>
   </div>
@@ -251,14 +271,14 @@
     <div class="wrap" id="content">
       <h2>What you’ll find</h2>
       <span class="latin" lang="la">Quae invenies</span>
-      <p class="section-intro">Many monasteries and convents make beautiful things and only sell them at the gate or the gift shop. We want to put them in front of Catholics everywhere.</p>
+      <p class="section-intro">Many monasteries and convents make beautiful items and only sell them at the gate or the gift shop. We want to put them in front of Catholics everywhere.</p>
       <div class="db" id="cat-list"></div>
     </div>
   </section>
 
   <section id="sellers">
     <div class="wrap"><h2>For sellers</h2><span class="latin" lang="la">Pro venditoribus</span><p class="section-intro">If you’re a monastery, convent, parish or Catholic small business, you can have your own shop on Merchants Guild. You don’t need a website or any technical know-how.</p>
-      <ol class="path" id="path"><span class="path-line" aria-hidden="true"><span id="path-fill"></span></span><li class="pst"><span class="pst-n" aria-hidden="true">I</span><div><h3>Get in touch</h3><p>Tell us who you are and what you make. A short email is enough.</p></div></li><li class="pst"><span class="pst-n" aria-hidden="true">II</span><div><h3>We set up your shop</h3><p>Send us photos and prices and we’ll put your listings together with you.</p></div></li><li class="pst"><span class="pst-n" aria-hidden="true">III</span><div><h3>Start selling</h3><p>Orders come to you, you post them out, and you get paid.</p></div></li></ol>
+      <ol class="path" id="path"><span class="path-line" aria-hidden="true"><span id="path-fill"></span></span><li class="pst"><span class="pst-n" aria-hidden="true">I</span><div><h3>Get in touch</h3><p>Fill in our <a href="sell.html">short form</a> to tell us who you are and what you make. It takes about five minutes.</p></div></li><li class="pst"><span class="pst-n" aria-hidden="true">II</span><div><h3>We set up your shop</h3><p>Send us photos and prices and we’ll put your listings together with you.</p></div></li><li class="pst"><span class="pst-n" aria-hidden="true">III</span><div><h3>Start selling</h3><p>Orders come to you, you post them out, and you get paid.</p></div></li></ol>
       <a class="btn btn-primary" href="sell.html">Sell with us</a>
     </div>
   </section>
@@ -284,15 +304,29 @@
     </div>
   </section>
 
-  <section class="cta" id="join">
+  <section class="cta" id="waitlist">
+    <span id="join"></span>
     <div class="wrap cta-inner">
-      <div>
-        <h2>Sell with us</h2>
-        <p>For monasteries, parishes and Catholic makers. Fill in a short form and tell us a little about what you make. Buying rather than selling? Join the waitlist instead.</p>
+      <div class="wl-copy">
+        <h2>Join the waitlist</h2><span class="latin" lang="la">Mox aperiemus</span>
+        <p>Be the first to know when the shop opens. We’ll only email you about Merchants Guild, and you can leave at any time.</p>
+        <p class="wl-sell">Want to sell rather than buy? <a href="sell.html">Apply to sell</a></p>
       </div>
-      <div class="actions">
-        <a class="btn btn-primary" href="sell.html">Apply to sell</a>
-        <a class="btn btn-ghost" href="mailto:merchantsguilds@gmail.com?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a>
+      <form class="wl" id="wl" novalidate>
+        <div class="wl-row">
+          <label class="wl-sr" for="wl-name">First name (optional)</label>
+          <input type="text" id="wl-name" name="first_name" placeholder="First name (optional)" autocomplete="given-name" maxlength="80">
+          <label class="wl-sr" for="wl-email">Email</label>
+          <input type="email" id="wl-email" name="email" placeholder="Your email" autocomplete="email" inputmode="email" maxlength="200" required>
+          <button class="btn btn-primary" type="submit" id="wl-go">Join</button>
+        </div>
+        <div class="wl-hp" aria-hidden="true"><label for="wl-web">Leave this empty</label><input type="text" id="wl-web" tabindex="-1" autocomplete="off"></div>
+        <p class="wl-msg" id="wl-msg" role="status" aria-live="polite"></p>
+        <p class="wl-small">We’ll keep your email only to tell you when we open. To be removed, email <a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a>.</p>
+      </form>
+      <div class="wl-done" id="wl-done" tabindex="-1" hidden>
+        <p class="wl-done-t">Thank you. You’re on the list.</p>
+        <p>We’ll email you when the shop opens.</p>
       </div>
     </div>
   </section>
@@ -365,7 +399,7 @@ var EMAIL = "merchantsguilds@gmail.com";
       return '<li><span class="r-name">'+esc(p.name)+'</span><span class="r-maker">'+esc(p.maker)+'</span><span class="r-price">'+esc(p.price)+'</span></li>';
     }).join('')+'</ul>':'<p class="empty">No examples match “'+esc(label)+'”. Try cheese, soap, candles or rosary.</p>';
     results.innerHTML='<div class="results-head"><span>'+esc(label)+'</span><b>Example listings</b></div>'+rows+
-      '<div class="results-foot">We’re still setting up, so nothing is for sale yet. <a href="mailto:'+EMAIL+'?subject=Add%20me%20to%20the%20waitlist">Join the waitlist</a> to hear when the shop opens.</div>';
+      '<div class="results-foot">We’re still setting up, so nothing is for sale yet. <a href="#waitlist">Join the waitlist</a> to hear when the shop opens.</div>';
     results.classList.add('open'); q.setAttribute('aria-expanded','true');
   }
   function hide(){results.classList.remove('open'); q.setAttribute('aria-expanded','false');}
@@ -463,5 +497,35 @@ var EMAIL = "merchantsguilds@gmail.com";
 MG.on(function(){var p=MG.view(path,.75,.45);fill.style.transform='scaleY('+p+')';st.forEach(function(s,i){s.classList.toggle('lit',p>=i/(st.length-1)-.02||p>.98);});});})();</script><script>(function(){var sec=document.getElementById('why'),svg=document.querySelector('#why-burst svg'),ps=[].slice.call(document.querySelectorAll('#rise p'));if(MG.rm)return;
 MG.on(function(){var r=sec.getBoundingClientRect(),q=MG.c(1-r.bottom/(innerHeight+r.height));svg.style.transform='rotate('+(q*120)+'deg) scale('+(.85+q*.3)+')';
 ps.forEach(function(p,i){var t=MG.view(p,.95-i*.04,.6);p.style.opacity=.15+.85*t;p.style.transform='translateY('+(1-t)*40+'px)';});});})();</script>
+<script>
+/* Waitlist sign-up: saves to the "waitlist" table in Supabase */
+(function(){
+  var SUPABASE_URL='https://hxemqbgkjxtrgwqhlmyn.supabase.co', SUPABASE_KEY='sb_publishable_1rOpinDtJMy8HdIkH7ZHZQ_omnVyYuC';
+  var form=document.getElementById('wl'); if(!form) return;
+  var email=document.getElementById('wl-email'), name=document.getElementById('wl-name'), go=document.getElementById('wl-go');
+  var msg=document.getElementById('wl-msg'), done=document.getElementById('wl-done');
+  var RE=/^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+  function finish(){ form.hidden=true; done.hidden=false; done.focus(); }
+  [].forEach.call(document.querySelectorAll('a[href="#waitlist"]'),function(a){
+    a.addEventListener('click',function(){ setTimeout(function(){ if(!form.hidden) email.focus({preventScroll:true}); },600); });
+  });
+  email.addEventListener('input',function(){ if(email.getAttribute('aria-invalid')==='true'&&RE.test(email.value.trim())){ email.setAttribute('aria-invalid','false'); msg.textContent=''; } });
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); msg.textContent='';
+    var v=email.value.trim();
+    if(!RE.test(v)){ email.setAttribute('aria-invalid','true'); msg.textContent='Please enter your email address.'; email.focus(); return; }
+    if(document.getElementById('wl-web').value){ finish(); return; }
+    go.disabled=true; go.textContent='Joining…';
+    var headers={'Content-Type':'application/json','apikey':SUPABASE_KEY,'Prefer':'return=minimal'};
+    if(SUPABASE_KEY.indexOf('eyJ')===0) headers.Authorization='Bearer '+SUPABASE_KEY;
+    fetch(SUPABASE_URL+'/rest/v1/waitlist',{method:'POST',headers:headers,body:JSON.stringify({email:v.toLowerCase(),first_name:name.value.trim()||null,source:'homepage'})})
+      .then(function(r){
+        if(r.ok||r.status===409){ finish(); return; }          /* 409 = already on the list */
+        throw new Error(r.status);
+      })
+      .catch(function(){ go.disabled=false; go.textContent='Join'; msg.innerHTML='Sorry, that didn’t work. Please try again, or email <a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a>.'; });
+  });
+})();
+</script>
 </body>
 </html>
