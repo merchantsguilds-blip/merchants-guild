@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy · Merchants Guild</title>
+<meta name="description" content="How Merchants Guild collects, uses and protects your information.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%2316181D'/%3E%3Cg transform='translate%2850 50%29 scale%280.36%29'%3E%3Cpath d='M-2.39 -19.86L0.00 -98.00L2.39 -19.86ZM5.39 -19.26L29.85 -72.06L9.81 -17.43ZM12.35 -15.73L69.30 -69.30L15.73 -12.35ZM17.43 -9.81L72.06 -29.85L19.26 -5.39ZM19.86 -2.39L98.00 0.00L19.86 2.39ZM19.26 5.39L72.06 29.85L17.43 9.81ZM15.73 12.35L69.30 69.30L12.35 15.73ZM9.81 17.43L29.85 72.06L5.39 19.26ZM2.39 19.86L0.00 98.00L-2.39 19.86ZM-5.39 19.26L-29.85 72.06L-9.81 17.43ZM-12.35 15.73L-69.30 69.30L-15.73 12.35ZM-17.43 9.81L-72.06 29.85L-19.26 5.39ZM-19.86 2.39L-98.00 0.00L-19.86 -2.39ZM-19.26 -5.39L-72.06 -29.85L-17.43 -9.81ZM-15.73 -12.35L-69.30 -69.30L-12.35 -15.73ZM-9.81 -17.43L-29.85 -72.06L-5.39 -19.26Z' fill='%23C9A55A'/%3E%3C/g%3E%3Cg transform='translate%285.90 86.85%29 scale%280.105 -0.105%29'%3E%3Cpath d='M709 280V115Q686 85 647.0 55.0Q608 25 551.5 5.5Q495 -14 419 -14Q313 -13 232.0 32.5Q151 78 105.5 159.5Q60 241 60 350Q60 459 105.5 541.0Q151 623 232.0 668.5Q313 714 419 714Q474 714 518.0 705.0Q562 696 597.5 680.5Q633 665 662 646L682 505H673Q658 563 623.5 602.5Q589 642 537.0 663.0Q485 684 419 684Q335 684 271.0 642.0Q207 600 171.0 525.0Q135 450 135 350Q135 250 171.0 175.0Q207 100 271.0 58.5Q335 17 419 16Q463 16 503.5 26.5Q544 37 580.0 56.5Q616 76 644 103L645 280Q645 325 594 325H578V335H774V325H759Q707 325 709 280Z' fill='%23FFFFFF'/%3E%3C/g%3E%3Ccircle cx='50' cy='50' r='7.5' fill='%23FBF7EC' stroke='%23C9A55A' stroke-width='1.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181D; --ink-2:#4B505B; --ink-3:#6B707B;
+    --line:#E6E4DF; --paper:#FFFFFF; --wash:#F7F6F3;
+    --gold:#A8812F; --gold-ink:#7E5F1F; --gold-soft:#F5EEDF;
+    --bad:#A3302A; --bad-soft:#FBEDEB;
+    --display:"Cinzel","Trajan Pro",Georgia,serif;
+    font-family:"Instrument Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--wash);color:var(--ink);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--gold-soft);color:var(--ink)}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+  a{color:inherit;text-underline-offset:3px}
+  button,input,select,textarea{font:inherit;color:inherit}
+
+  header{background:var(--paper);border-bottom:1px solid var(--line)}
+  .bar{max-width:760px;margin:0 auto;padding:0 24px;height:68px;display:flex;align-items:center;justify-content:space-between}
+  .home{font-family:var(--display);font-size:22px;letter-spacing:.05em;text-decoration:none}
+  .back{font-size:14px;color:var(--ink-2)}
+
+  main{max-width:760px;margin:0 auto;padding:48px 24px 96px}
+  h1{font-family:var(--display);font-weight:400;font-size:clamp(30px,5vw,44px);letter-spacing:.04em;line-height:1.15;margin:0 0 14px}
+  .intro{color:var(--ink-2);font-size:17px;margin:0 0 36px;max-width:60ch}
+
+  form{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:8px 28px 28px}
+  fieldset{border:0;margin:0;padding:24px 0 6px;border-bottom:1px solid var(--line)}
+  fieldset:last-of-type{border-bottom:0}
+  legend{font-family:var(--display);font-size:19px;letter-spacing:.04em;padding:0;margin-bottom:16px}
+  .f{margin:0 0 20px}
+  .row{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
+  label,.q{display:block;font-weight:500;font-size:15px;margin:0 0 6px}
+  .opt{font-weight:400;color:var(--ink-3);font-size:14px}
+  .hint{display:block;font-size:14px;color:var(--ink-3);margin:-2px 0 8px}
+  input[type=text],input[type=email],input[type=tel],input[type=url],select,textarea{
+    width:100%;min-height:46px;padding:10px 12px;border:1px solid #D9D6CF;border-radius:8px;background:var(--paper);font-size:16px}
+  textarea{min-height:120px;resize:vertical;line-height:1.5}
+  input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink);box-shadow:0 0 0 3px var(--gold-soft)}
+  .choices{display:grid;gap:8px}
+  .choices.two{grid-template-columns:1fr 1fr}
+  .choice{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border:1px solid #D9D6CF;border-radius:8px;cursor:pointer;font-weight:400;font-size:15px;margin:0}
+  .choice:has(input:checked){border-color:var(--ink);background:var(--wash)}
+  .choice input{margin:3px 0 0;accent-color:var(--ink);width:16px;height:16px;flex:none}
+  .bad input,.bad select,.bad textarea,.bad .choice{border-color:var(--bad)}
+  .err{display:none;color:var(--bad);font-size:14px;margin:6px 0 0}
+  .bad .err{display:block}
+  .consent{padding-top:24px}
+  .consent .choice{border:0;padding:0}
+  .privacy{font-size:14px;color:var(--ink-3);margin:10px 0 0 26px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+  .send{margin-top:24px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;justify-content:center;height:46px;padding:0 22px;border-radius:8px;font-size:15px;font-weight:500;text-decoration:none;border:1px solid transparent;cursor:pointer;background:var(--ink);color:#fff}
+  .btn:hover{background:#2A2D35}
+  .btn[disabled]{opacity:.6;cursor:progress}
+  .status{font-size:14px;color:var(--ink-2)}
+  .alert{display:none;margin:0 0 20px;padding:14px 16px;border-radius:10px;background:var(--bad-soft);color:var(--bad);font-size:15px}
+  .alert.on{display:block}
+
+  .done{display:none;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:40px 28px;text-align:center}
+  .done.on{display:block}
+  .done h2{font-family:var(--display);font-weight:400;font-size:28px;letter-spacing:.04em;margin:0 0 10px}
+  .done p{color:var(--ink-2);margin:0 auto 24px;max-width:46ch}
+
+  @media (max-width:600px){
+    main{padding:32px 16px 72px}
+    .bar{padding:0 16px}
+    form{padding:4px 18px 22px}
+    .row,.choices.two{grid-template-columns:1fr}
+  }
+
+  .prose{max-width:720px}
+  .prose .lead{color:var(--ink-2);font-size:18px;margin:0 0 8px;max-width:60ch}
+  .prose .updated{color:var(--ink-3);font-size:14px;margin:0 0 40px}
+  .prose h2{font-family:var(--display);font-weight:400;font-size:24px;letter-spacing:.04em;margin:44px 0 12px;padding-top:28px;border-top:1px solid var(--line)}
+  .prose h3{font-size:17px;font-weight:600;margin:22px 0 4px}
+  .prose p,.prose li{max-width:66ch}
+  .prose p{margin:0 0 14px}
+  .prose ul{padding-left:20px;margin:0 0 14px}
+  .prose li{margin:0 0 6px}
+  .prose a{color:var(--ink)}
+  .site-foot{border-top:1px solid var(--line);background:var(--paper)}
+  .site-foot div{max-width:760px;margin:0 auto;padding:24px;font-size:14px;color:var(--ink-3);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+  .site-foot a{text-decoration:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <a class="home" href="/" translate="no">Merchants Guild</a>
+    <a class="back" href="/">Back to the shop</a>
+  </div>
+</header>
+
+<main class="prose">
+  <h1>Privacy</h1>
+  <p class="lead">This page explains what information Merchants Guild collects, why, and what you can ask us to do with it. We keep it short and plain.</p>
+  <p class="updated">Last updated: 5 October 2026</p>
+
+  <h2>Who we are</h2>
+  <p>Merchants Guild (merchantsguild.org) is a marketplace being set up for monasteries, parishes and Catholic makers. We are responsible for the information described here. You can contact us about anything on this page at <a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a>.</p>
+
+  <h2>What we collect</h2>
+  <h3>If you join the waitlist</h3>
+  <p>Your email address, and your first name if you give it. We use these only to tell you when the shop opens and to send occasional news about Merchants Guild.</p>
+  <h3>If you apply to sell</h3>
+  <p>What you tell us on the “Sell with us” form: the name of your community or business, your name and role, email, phone number if you give it, town and country, what you make, and your answers to the other questions. We use this to reply to you, to decide together whether Merchants Guild is a good fit, and to set up your shop.</p>
+  <h3>If you email us</h3>
+  <p>Your email address and whatever you choose to write, so that we can reply.</p>
+  <h3>When you visit the site</h3>
+  <p>We don’t use cookies, advertising trackers or analytics. Like every website, our hosting provider records basic technical details, such as your IP address and browser type, to keep the site running and secure.</p>
+
+  <h2>Why we’re allowed to use it</h2>
+  <ul>
+    <li><strong>Waitlist:</strong> your consent, given when you sign up. You can withdraw it at any time.</li>
+    <li><strong>Seller applications:</strong> your consent, given by ticking the box on the form, and because it’s needed to talk with you about selling on Merchants Guild.</li>
+    <li><strong>Emails and site security:</strong> our legitimate interest in replying to messages and keeping the website working safely.</li>
+  </ul>
+
+  <h2>Who else handles it</h2>
+  <p>We never sell your information or share it with advertisers. We use a few trusted services to run the website, and they only handle your information on our behalf:</p>
+  <ul>
+    <li><strong>Supabase</strong> stores waitlist sign-ups and seller applications in a secure database in Europe.</li>
+    <li><strong>Vercel</strong> hosts the website.</li>
+    <li><strong>Google</strong> provides our email (Gmail) and the fonts used on the site. Loading the fonts means your browser contacts Google’s servers.</li>
+  </ul>
+  <p>Some of these companies are based in the United States. Where your information leaves the UK, they protect it with the safeguards UK law requires, such as approved data-transfer agreements.</p>
+
+  <h2>How long we keep it</h2>
+  <ul>
+    <li><strong>Waitlist:</strong> until you ask to be removed, or until we stop running the waitlist.</li>
+    <li><strong>Seller applications:</strong> if we go ahead together, for as long as you sell with us. If we don’t, we delete your application within 12 months.</li>
+    <li><strong>Emails:</strong> for as long as we need them to deal with what you wrote to us about.</li>
+  </ul>
+
+  <h2>Your rights</h2>
+  <p>Under UK data protection law you can ask us to:</p>
+  <ul>
+    <li>show you the information we hold about you;</li>
+    <li>correct anything that’s wrong;</li>
+    <li>delete your information;</li>
+    <li>stop or limit how we use it;</li>
+    <li>give you a copy to take elsewhere.</li>
+  </ul>
+  <p>Just email <a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a>. It’s free, and we’ll reply within one month.</p>
+  <p>If you’re unhappy with how we’ve handled your information, please tell us first so we can put it right. You can also complain to the Information Commissioner’s Office at <a href="https://ico.org.uk/make-a-complaint/" rel="noopener">ico.org.uk</a> or on 0303 123 1113.</p>
+
+  <h2>Children</h2>
+  <p>Merchants Guild is meant for adults. Please don’t join the waitlist or apply to sell if you’re under 16.</p>
+
+  <h2>Changes</h2>
+  <p>If we change how we use your information, we’ll update this page and the date at the top. If the change is important, we’ll email the people it affects.</p>
+</main>
+<footer class="site-foot"><div><span>© 2026 <span translate="no">Merchants Guild</span></span><a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a></div></footer>
+</body>
+</html>
