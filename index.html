@@ -133,6 +133,8 @@ body.t-light .bgpin img,body.t-white .bgpin img{opacity:.16}
 .links a{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .4s;padding-bottom:2px}.links a:hover{background-size:100% 1px}
 summary{transition:color .25s}summary:hover{color:var(--gold)}
 .cover img{transition:transform 1.4s cubic-bezier(.16,1,.3,1)}.cover:hover img{transform:scale(1.04)}
+.dock .Lg>path:first-child{stroke:var(--paper);stroke-width:44;paint-order:stroke}
+button,input,select,textarea{font-family:inherit}
 .dock .s{transform-box:fill-box;transform-origin:center;transition:transform 1.6s cubic-bezier(.16,1,.3,1)}
 .dock.on:hover .s{transform:rotate(45deg)}
 .pst-n{transition:background-color .4s,border-color .4s,color .4s,transform .3s}.pst:hover .pst-n{transform:scale(1.08)}
@@ -211,7 +213,6 @@ button.row{width:100%;text-align:left;border:0;border-bottom:1px solid var(--lin
 .name{font-size:min(var(--fs),calc((100vw - 48px)/12.20))!important}
 .btn,.menu{white-space:nowrap}
 @media (max-width:760px){body.l-split .cover{height:44vh;height:44svh}}
-button,input,select,textarea{font-family:inherit}
 </style></head>
 <body class="t-dark l-name g-burst w-bapt">
 <a class="skip" href="#find">Skip to content</a>
@@ -265,7 +266,7 @@ button,input,select,textarea{font-family:inherit}
 <footer><div class="wrap"><div class="foot"><span class="amdg">Ad maiorem Dei gloriam</span><span class="foot-links"><span>© 2026 <span translate="no">Merchants Guild</span></span><a href="mailto:merchantsguilds@gmail.com">merchantsguilds@gmail.com</a><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a></span></div>
 <p class="credits">Pictures: public-domain works from The Metropolitan Museum of Art, the Art Institute of Chicago and the Cleveland Museum of Art. Museum objects are shown as examples only and are not for sale.</p></div></footer>
 </div></main>
-<script>var MONO_W=1759,GSHIFT=5876;
+<script>var MONO_W=1548,GSHIFT=6087;
 var MG={c:function(v){return Math.min(1,Math.max(0,v))},
  view:function(el,a,b){var r=el.getBoundingClientRect();return MG.c((innerHeight*a-r.top)/(innerHeight*a-innerHeight*b+r.height))},
  on:function(fn){var t=false;addEventListener('scroll',function(){if(!t){t=true;requestAnimationFrame(function(){fn();t=false})}},{passive:true});addEventListener('resize',fn);fn()}};
