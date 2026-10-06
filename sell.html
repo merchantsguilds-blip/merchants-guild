@@ -106,15 +106,15 @@
   .home:hover .s{transform:rotate(45deg)}
   @media (max-width:600px){.nm{height:15px}}
 
-.hb{position:relative;margin:64px calc(50% - 50vw) 0;padding:110px 24px;text-align:center;overflow:hidden;border-top:1px solid var(--line)}
-.hb .bg{position:absolute;inset:0;background:url(mg-homobonus.jpg) 82% 6%/cover}
-.hb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--wash),rgba(23,17,14,0) 26%,rgba(23,17,14,0) 74%,var(--wash))}
+.hb{position:relative;margin:64px calc(50% - 50vw) 0;padding:110px 24px;min-height:clamp(520px,72vh,820px);display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;border-top:1px solid var(--line)}
+.hb .bg{position:absolute;inset:0;background:url(mg-homobonus.jpg) 82% 18%/cover}
+.hb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,var(--wash),rgba(23,17,14,0) 20%,rgba(23,17,14,0) 80%,var(--wash))}
 .pci{position:relative;z-index:1;max-width:560px;margin:0 auto}
 .hb.L{text-align:left}.hb.L .pci{max-width:470px;margin:0 0 0 max(0px,calc(50vw - 560px))}
 .ey{font-family:var(--display);font-size:12px;letter-spacing:.3em;color:var(--gold);margin:0 0 10px}
 .pn{font-family:var(--display);font-size:28px;letter-spacing:.04em;margin:0 0 12px}.pt{margin:0;color:var(--ink-2)}
 body{overflow-x:hidden}
-@media (max-width:600px){.hb{padding:250px 20px 48px}.hb .bg{background-size:auto 300px;background-position:82% 0;bottom:auto;height:300px}.hb::after{background:linear-gradient(180deg,var(--wash),rgba(23,17,14,0) 12%,rgba(23,17,14,0) 38%,var(--wash) 62%)}.hb.L .pci{margin:0}}
+@media (max-width:600px){.hb{min-height:0;display:block;padding:250px 20px 48px}.hb .bg{background-size:auto 300px;background-position:82% 0;bottom:auto;height:300px}.hb::after{background:linear-gradient(180deg,var(--wash),rgba(23,17,14,0) 12%,rgba(23,17,14,0) 38%,var(--wash) 62%)}.hb.L .pci{margin:0}}
 
 </style>
 </head>
